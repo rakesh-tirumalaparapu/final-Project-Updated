@@ -457,6 +457,7 @@ export default function CheckerApplicationReview() {
                 Reject
               </button>
               <button className="btn btn-success" onClick={() => {
+                if (!comment.trim()) { setCommentError('Comment is required to approve'); return; }
                 setConfirmDialog({
                   show: true,
                   title: 'Confirm Approval',
@@ -464,7 +465,7 @@ export default function CheckerApplicationReview() {
                   onConfirm: async () => {
                     setConfirmDialog({ show:false, title:'', message:'', onConfirm:null });
                     try {
-                      await reviewCheckerApplication(id, 'approve', comment || '');
+                      await reviewCheckerApplication(id, 'approve', comment.trim());
                       window.location.href = '/checker-dashboard';
                     } catch (e) {
                       setToast({ show: true, variant: 'danger', message: e.message || 'Approve failed', actionText: 'Close', onAction: () => setToast({ ...toast, show: false }) });
