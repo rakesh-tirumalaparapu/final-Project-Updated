@@ -127,6 +127,19 @@
   margin-bottom: 0;
 }
 
+/* Hide scrollbar in table-responsive while keeping scroll functionality */
+.table-responsive {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+}
+
+.table-responsive::-webkit-scrollbar {
+  /* Chrome, Safari, Opera */
+  display: none;
+}
+
 .table th {
   background: var(--sc-light);
   border-bottom: 2px solid var(--sc-border);
